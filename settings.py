@@ -1,1 +1,1 @@
-playlist_id = "1X0j1VX7tga766MkCUckMO?si=c0c611314761460c"
+playlist_link = "https://open.spotify.com/playlist/0iW9OLfdMdV8XrnVxZmTyT?si=001353f6799d48b9"

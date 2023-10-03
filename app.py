@@ -5,7 +5,7 @@ import json
 import os
 from googleapiclient.discovery import build
 import googleapiclient.errors
-from settings import playlist_id
+from settings import playlist_link
 from pytube import YouTube
 
 
@@ -13,6 +13,8 @@ load_dotenv()
 
 client_id = os.getenv("CLIENT_ID")
 client_secret = os.getenv("CLIENT_SECRET")
+
+playlist_id = playlist_link.split("/")[-1]
 
 
 def get_token():
