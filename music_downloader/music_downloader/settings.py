@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,6 +34,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'downloader',
+    'social_django',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,6 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+# Spotify Credentials
+load_dotenv()
+
+SPOTIFY_CLIENT_ID = os.getenv('CLIENT_ID')
+SPOTIFY_CLIENT_SECRET = os.getenv('CLIENT_SECRET')
+SPOTIFY_REDIRECT_URI = 'http://localhost:8000/redirect'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -1,0 +1,60 @@
+#navbar {
+    background-color: black;
+    padding: 10px;
+}
+
+#navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar ul li {
+    display: inline;
+    background-color: green;
+}
+
+#bg-img {
+    background: url("music-bg.jpg") no-repeat center fixed;
+    background-size: cover;
+}
+
+#title {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    color: plum;
+}
+
+.wht-txt {
+    color: white;
+}
+
+#connect-btn {
+    position: absolute;
+    top: 50%;
+    left: 42%;
+    padding: 10px;
+    font-size: 18px;
+    background-color: blueviolet;
+    border-radius: 25px;
+    cursor: pointer;
+    transition-duration: 0.5s;
+    border-style: none;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#connect-btn:hover {
+    background-color: purple;
+}
+
+#galery {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.galery-item {
+    border: 1px solid black;
+    width: 320px;
+    height: 320px;
+    margin: 20px;
+}
