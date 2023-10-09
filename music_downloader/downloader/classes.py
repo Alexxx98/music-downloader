@@ -3,8 +3,9 @@ from .utils import get_api_data
 
 
 class Playlist():
-    def __init__(self, data):
+    def __init__(self, data, token):
         self.data = data
+        self.token = token
 
     def __str__(self):
         return str(self.data)
@@ -15,11 +16,12 @@ class Playlist():
     def get_title(self):
         ...
 
-    def get_tracks(self, token):
+    @property
+    def tracks(self):
         songs = []
         song = dict()
         url = self.data['tracks']['href']
-        tracks_data = get_api_data(url, token)
+        tracks_data = get_api_data(url, self.token)
         for track in tracks_data['items']:
             song = song.copy()
             song['artist'] = track['track']['artists'][0]['name']

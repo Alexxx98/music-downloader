@@ -3,13 +3,8 @@
 {% block body %}
 
     <div id="galery">
-        {{ playlist }}
-    </div>
-    <br>
-    <br>
-    <div>
-        {% for track in tracks %}
-            {{ track }}
+        {% for playlist in playlists %}
+            {{ playlist.tracks }}
         {% endfor %}
     </div>
 

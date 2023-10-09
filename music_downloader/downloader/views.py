@@ -54,12 +54,9 @@ def home(request):
     playlists_items = playlists_data['items']
     playlists = []
     for playlist_data in playlists_items:
-        playlists.append(Playlist(playlist_data))
-
-    tracks = playlists[0].get_tracks(token) 
+        playlists.append(Playlist(playlist_data, token))
 
     return render(request, "downloader/home.html", {
         "playlists": playlists,
         "playlist": playlists[0],
-        "tracks": tracks,
     })
