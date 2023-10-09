@@ -7,6 +7,8 @@ from music_downloader.settings import SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, 
 from .utils import get_api_data
 import time
 
+from .classes import Playlist
+
 
 SPOTIFY_SCOPES = 'user-library-read playlist-read-private playlist-read-collaborative'
 
@@ -44,27 +46,20 @@ def home(request):
 
     token = token_info['access_token']
 
-    user_url = 'https://api.spotify.com/v1/me'
-    user_data = get_api_data(user_url, token_info['access_token'])
-    if 'user_data' not in request.session:
-        request.session['user_data'] = user_data
-
-    user_id = user_data['id']
-
-    playlists_url = f"https://api.spotify.com/v1/users/{user_id}/playlists"
+    playlists_url = f"https://api.spotify.com/v1/me/playlists"
     playlists_data = get_api_data(playlists_url, token)
     if 'playlists_data' not in request.session:
         request.session['playlists_data'] = playlists_data
 
-    playlists = playlists_data['items']
-    images_info = [playlist['images'] for playlist in playlists]
-    images_urls = []
-    for image_info in images_info:
-        for data in image_info:
-            if data['height'] == 640:
-                images_urls.append(data['url'])
+    playlists_items = playlists_data['items']
+    playlists = []
+    for playlist_data in playlists_items:
+        playlists.append(Playlist(playlist_data))
+
+    tracks = playlists[0].get_tracks(token) 
 
     return render(request, "downloader/home.html", {
         "playlists": playlists,
-        "images": images_urls,
+        "playlist": playlists[0],
+        "tracks": tracks,
     })

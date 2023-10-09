@@ -3,9 +3,14 @@
 {% block body %}
 
     <div id="galery">
-        {% for image in images %}
-            <img class="galery-item" src="{{ image }}" alt="playlist image">
+        {{ playlist }}
+    </div>
+    <br>
+    <br>
+    <div>
+        {% for track in tracks %}
+            {{ track }}
         {% endfor %}
     </div>
-    
+
 {% endblock %}
