@@ -58,5 +58,4 @@ def home(request):
 
     return render(request, "downloader/home.html", {
         "playlists": playlists,
-        "playlist": playlists[0],
     })

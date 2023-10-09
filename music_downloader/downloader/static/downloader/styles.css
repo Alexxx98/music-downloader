@@ -87,9 +87,28 @@ li a:hover {
     flex-wrap: wrap;
 }
 
+#galery a {
+    text-decoration: none;
+    color: black;
+    transition-duration: 0.5s;
+}
+
+#galery a:hover {
+    background-color: rgb(32,32,32);
+}
+
 .galery-item {
     border: 1px solid black;
+    margin: 20px;
+    text-align: center;
+}
+
+.galery-img {
     width: 320px;
     height: 320px;
-    margin: 20px;
+}
+
+.playlist-title {
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
 }

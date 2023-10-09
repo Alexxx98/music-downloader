@@ -4,7 +4,16 @@
 
     <div id="galery">
         {% for playlist in playlists %}
-            {{ playlist.tracks }}
+            {% if playlist.image %}
+            <a style="text-decoration: none; color: black;" href="">
+                    <div class="galery-item">
+                    <img class="galery-img" src="{{ playlist.image }}">
+                    <div class="playlist-title">
+                        <h3>{{ playlist.title | title }}</h3>
+                    </div>
+                </div>
+            </a>
+            {% endif %}
         {% endfor %}
     </div>
 

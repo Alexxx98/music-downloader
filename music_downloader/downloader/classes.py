@@ -10,11 +10,16 @@ class Playlist():
     def __str__(self):
         return str(self.data)
 
-    def get_image(self):
-        ...
+    @property
+    def image(self):
+        try:
+            return self.data['images'][0]['url']
+        except IndexError:
+            return None
     
-    def get_title(self):
-        ...
+    @property
+    def title(self):
+        return self.data['name']
 
     @property
     def tracks(self):
