@@ -1,2 +1,7 @@
 .env
 venv
+
+music_downloader/music_downloader/__pycache__
+music_downloader/downloader/__pycache__
+
+muscic_downloader/.cache

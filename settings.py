@@ -1,1 +1,0 @@
-playlist_link = "https://open.spotify.com/playlist/0iW9OLfdMdV8XrnVxZmTyT?si=001353f6799d48b9"
