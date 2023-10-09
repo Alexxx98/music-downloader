@@ -49,6 +49,7 @@ load_dotenv()
 SPOTIFY_CLIENT_ID = os.getenv('CLIENT_ID')
 SPOTIFY_CLIENT_SECRET = os.getenv('CLIENT_SECRET')
 SPOTIFY_REDIRECT_URI = 'http://localhost:8000/redirect'
+YOUTUBE_API_KEY = os.getenv("API_KEY")
 
 
 MIDDLEWARE = [

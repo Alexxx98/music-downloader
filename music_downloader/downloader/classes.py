@@ -1,4 +1,3 @@
-import requests
 from .utils import get_api_data
 
 
@@ -7,8 +6,8 @@ class Playlist():
         self.data = data
         self.token = token
 
-    def __str__(self):
-        return str(self.data)
+    def __repr__(self):
+        return {self.title: self.tracks}
 
     @property
     def image(self):
@@ -33,3 +32,7 @@ class Playlist():
             song['track'] = track['track']['name']
             songs.append(song)
         return songs
+
+    def serialize(self):
+        return {'title': self.title, 'tracks': self.tracks}
+    
