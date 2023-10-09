@@ -12,8 +12,9 @@
 <body>
     <div id="navbar">
         <ul>
-            <li>Home</li>
-            <li>Download</li>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><h2 id="nav-title">Spotify Playlist Downloader</h2></li>
+            <li style="float: right;"><a href="{% url 'connect' %}">Sign Out</a></li>
         </ul>
     </div>
 

@@ -1,17 +1,52 @@
+body {
+    margin: 0;
+}
+
 #navbar {
     background-color: black;
-    padding: 10px;
+    margin: 0;
 }
 
 #navbar ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    overflow: hidden;
+
 }
 
-#navbar ul li {
+ul li {
     display: inline;
+    float: left;
+}
+
+li a {
+    text-decoration: none;
     background-color: green;
+    color: white;
+    padding: 30px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+li a:hover {
+    background-color: darkgreen;
+}
+
+#nav-title {
+    align-items: center;
+    color: white;
+    padding: 0;
+    margin: 0;
+    margin-left: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#content {
+    background-color: rgb(64,64,64);
 }
 
 #bg-img {

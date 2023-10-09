@@ -1,11 +1,11 @@
 {% extends 'downloader/layout.html' %}
 
 {% block body %}
-    Welcome to Spotify downloader
 
     <div id="galery">
         {% for image in images %}
             <img class="galery-item" src="{{ image }}" alt="playlist image">
         {% endfor %}
     </div>
+    
 {% endblock %}
