@@ -5,7 +5,7 @@
     <div id="galery">
         {% for playlist in playlists %}
             {% if playlist.image %}
-            <a href="{% url 'download' playlist.title %}">
+            <a href="{% url 'playlist_view' playlist.id %}">
                 <div class="galery-item">
                     <img class="galery-img" src="{{ playlist.image }}">
                     <div class="playlist-title">

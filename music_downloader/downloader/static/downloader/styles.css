@@ -17,12 +17,12 @@ body {
 
 }
 
-ul li {
+#navbar ul li {
     display: inline;
     float: left;
 }
 
-li a {
+#navbar ul li a {
     text-decoration: none;
     background-color: green;
     color: white;
@@ -32,7 +32,7 @@ li a {
     font-family: 'Courier New', Courier, monospace;
 }
 
-li a:hover {
+#navbar ul li a:hover {
     background-color: darkgreen;
 }
 
@@ -111,4 +111,73 @@ li a:hover {
 .playlist-title {
     color: black;
     font-family: 'Courier New', Courier, monospace;
+}
+
+#playlist-view {
+    text-align: center;
+    margin: 20px;
+}
+
+#cover {
+    height: 320px;
+    width: 320px;
+}
+
+#download-area {
+    border-bottom: 1px solid black;
+    max-width: 800px;
+    display: inline-block;
+}
+
+#download-btn {
+    height: 100px;
+    width: 250px;
+    margin-bottom: 50px;
+    border-radius: 25px;
+    border-style: none;
+    background-color: rgb(32, 32, 32);
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+
+#download-btn h2 {
+    color: green;
+    font-size: 32px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#download-btn:hover {
+    background-color: black;
+}
+
+#tracks {
+    display: inline-block;
+    border-top: 1px solid black;
+    list-style-type: none;
+    padding: 0;
+    max-width: 800px;
+}
+
+#tracks li {
+    padding: 10px;
+    border-bottom: 1px double black;
+    border-radius: 15px;
+    background-color: rgb(80, 80, 80);
+}
+
+#tracks li a {
+    text-decoration: none;
+}
+
+#tracks li a img {
+    float: right;
+    margin-left: 5px;
+    background-color: rgb(32, 32, 32);
+    border-radius: 25px;
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+
+#tracks li a img:hover {
+    background-color: black;
 }

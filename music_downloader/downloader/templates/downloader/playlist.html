@@ -1,0 +1,25 @@
+{% extends 'downloader/layout.html' %}
+
+{% block body %}
+    <div id="playlist-view">
+        <img id="cover" src="{{ playlist.image }}">
+        <div>
+            <h1>{{ playlist.title | title }}</h1>
+        </div>
+        <div id="download-area">
+            <a href="{% url 'download' playlist.id 'all' %}">
+                <button id="download-btn"><h2>Download</h2></button>
+            </a>
+        </div>
+        <h2>Tracks</h2>
+        <ol id="tracks">
+            {% for track in playlist.tracks %}
+                <li>{{ track.artist }} - {{ track.track }} 
+                    <a href="{% url 'download' playlist.id track.track %}">
+                        <img width="24px" height="24px" src="../../static/downloader/download-btn.png">
+                    </a>
+                </li>
+            {% endfor %}
+        </ol>
+    </div>
+{% endblock %}

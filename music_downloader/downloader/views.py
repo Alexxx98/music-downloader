@@ -13,10 +13,16 @@ import time
 import os
 
 
-
 SPOTIFY_SCOPES = 'user-library-read playlist-read-private playlist-read-collaborative'
 
 sp_oauth = SpotifyOAuth(SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REDIRECT_URI, scope=SPOTIFY_SCOPES)
+
+def get_playlist(playlists_items, playlist_id, token):
+    for id, playlist_data in enumerate(playlists_items):
+        if id == playlist_id:
+            playlist = Playlist(playlist_data, token)
+            playlist.id = str(id)
+            return playlist
 
 # Create your views here.
 def connect(request):
@@ -54,27 +60,45 @@ def home(request):
     playlists_data = get_api_data(playlists_url, token)
 
     playlists_items = playlists_data['items']
-    playlists = []
-    for playlist_data in playlists_items:
-        playlists.append(Playlist(playlist_data, token))
 
-    if 'playlists' not in request.session:
-        request.session['playlists'] = []
+    if 'playlists_items' not in request.session:
+        request.session['playlists_items'] = playlists_items
 
-    for playlist in playlists:
-        request.session['playlists'].append(playlist.serialize())
+    playlists = []    
 
+    for id, playlist_data in enumerate(playlists_items):
+        playlist = Playlist(playlist_data, token)
+        playlist.id = str(id)
+        playlists.append(playlist)
+    
     return render(request, "downloader/home.html", {
         "playlists": playlists,
     })
 
-def download(request, playlist_title):
-    playlists = request.session['playlists']
-    for playlist in playlists:
-        if playlist_title in playlist:
-            pl = playlist
-            tracks = playlist[playlist_title]
+def playlist_view(request, playlist_id):
+    token = request.session['token_info']['access_token']
+    playlists_items = request.session['playlists_items']
 
+    playlist = get_playlist(playlists_items, playlist_id, token)
+
+    return render(request, "downloader/playlist.html", {
+        "playlist": playlist,
+    })
+
+def download(request, playlist_id, songs):
+    token = request.session['token_info']['access_token']
+    playlists_items = request.session['playlists_items']
+
+    playlist = get_playlist(playlists_items, playlist_id, token)
+    
+    tracks = playlist.tracks
+
+    if songs != 'all':
+        for track in tracks:
+            if songs == track['track']:
+                tracks = [track]
+                break
+                
     youtube = build("youtube", "v3", developerKey=YOUTUBE_API_KEY)
 
     # generate youtube query
@@ -93,7 +117,7 @@ def download(request, playlist_title):
         urls.append(f"https://www.youtube.com/watch?v={id}")  
 
     music_folder = os.path.expanduser('~/Music')
-    destination = os.path.join(music_folder, playlist_title.title())
+    destination = os.path.join(music_folder, playlist.title.title())
     try:
         os.listdir(destination)
     except FileNotFoundError:

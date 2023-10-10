@@ -6,8 +6,16 @@ class Playlist():
         self.data = data
         self.token = token
 
-    def __repr__(self):
-        return {self.title: self.tracks}
+    def __str__(self):
+        return f"{self._id}, {self.title}, {self.tracks}"
+    
+    @property
+    def id(self):
+        return self._id
+    
+    @id.setter
+    def id(self, id):
+        self._id = id
 
     @property
     def image(self):
@@ -32,7 +40,4 @@ class Playlist():
             song['track'] = track['track']['name']
             songs.append(song)
         return songs
-
-    def serialize(self):
-        return {'title': self.title, 'tracks': self.tracks}
     
